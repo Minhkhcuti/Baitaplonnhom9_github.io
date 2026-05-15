@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<section class="checkout-page py-5">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- FORM -->
+            <div class="col-lg-7">
+
+                <div class="checkout-box shadow-sm">
+
+                    <h3 class="mb-4">
+                        Checkout
+                    </h3>
+
+                    <form id="checkout-form">
+
+                        <div class="form-group">
+
+                            <label>Full Name</label>
+
+                            <input type="text"
+                                class="form-control"
+                                id="checkout-name">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Email</label>
+
+                            <input type="email"
+                                class="form-control"
+                                id="checkout-email">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Phone</label>
+
+                            <input type="text"
+                                class="form-control"
+                                id="checkout-phone">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Address</label>
+
+                            <textarea
+                                class="form-control"
+                                id="checkout-address">
+                            </textarea>
+
+                        </div>
+
+                        <button class="btn btn-dark btn-block">
+
+                            Place Order
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- SUMMARY -->
+            <div class="col-lg-5">
+
+                <div class="checkout-summary shadow-sm">
+
+                    <h4>
+                        Order Summary
+                    </h4>
+
+                    <hr>
+
+                    <div id="checkout-items">
+
+                    </div>
+
+                    <hr>
+
+                    <h5>
+                        Total:
+                        <span id="checkout-total">
+                            $0
+                        </span>
+                    </h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="js/checkout.js"></script>
+
+</body>
+</html>

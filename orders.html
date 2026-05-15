@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Order History</title>
+
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+</head>
+
+<body class="p-5">
+
+<h2 class="mb-5">
+    Order History
+</h2>
+
+<div id="order-list">
+
+</div>
+
+<script>
+
+let orders = JSON.parse(
+    localStorage.getItem("orders")
+) || [];
+
+const orderList = document.getElementById(
+    "order-list"
+);
+
+let html = "";
+
+orders.forEach(order => {
+
+    html += `
+    
+    <div class="card mb-4">
+
+        <div class="card-body">
+
+            <h5>
+                Order ID: ${order.id}
+            </h5>
+
+            <p>
+                Customer: ${order.customer.name}
+            </p>
+
+            <p>
+                Date: ${order.date}
+            </p>
+
+            <ul>
+
+                ${order.items.map(item => `
+                
+                    <li>
+                        ${item.name}
+                        x${item.quantity}
+                    </li>
+                
+                `).join("")}
+
+            </ul>
+
+        </div>
+
+    </div>
+    
+    `;
+});
+
+orderList.innerHTML = html;
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Orders</title>
+
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+</head>
+
+<body class="p-5">
+
+<h2 class="mb-5">
+    Manage Orders
+</h2>
+
+<table class="table table-bordered">
+
+    <thead class="thead-dark">
+
+        <tr>
+
+            <th>Order ID</th>
+
+            <th>Customer</th>
+
+            <th>Date</th>
+
+            <th>Total Items</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody id="admin-orders">
+
+    </tbody>
+
+</table>
+
+<script>
+
+let orders = JSON.parse(
+    localStorage.getItem("orders")
+) || [];
+
+const adminOrders = document.getElementById(
+    "admin-orders"
+);
+
+let html = "";
+
+orders.forEach(order => {
+
+    html += `
+    
+    <tr>
+
+        <td>
+            ${order.id}
+        </td>
+
+        <td>
+            ${order.customer.name}
+        </td>
+
+        <td>
+            ${order.date}
+        </td>
+
+        <td>
+            ${order.items.length}
+        </td>
+
+    </tr>
+    
+    `;
+});
+
+adminOrders.innerHTML = html;
+
+</script>
+
+</body>
+</html>
