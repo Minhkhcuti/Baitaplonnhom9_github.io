@@ -2,30 +2,30 @@ const products = [
 
     {
         id: 1,
-        name: "Luxury Lipstick",
-        price: 25,
-        image: "https://images.unsplash.com/photo-1631214540553-ff044a3ff1d4?q=80&w=1200&auto=format&fit=crop"
+        name: "Nước hoa",
+        price: 250000,
+        image: "images/products/nuochoa.jpg"
     },
 
     {
         id: 2,
-        name: "Glow Foundation",
-        price: 40,
-        image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1200&auto=format&fit=crop"
+        name: "Nước rửa mặt",
+        price: 400000,
+        image: "images/products/nuoc.jpg"
     },
 
     {
         id: 3,
-        name: "Skin Care Set",
-        price: 60,
-        image: "https://images.unsplash.com/photo-1556228578-dd3e4f0f4c36?q=80&w=1200&auto=format&fit=crop"
+        name: "Tẩy trang",
+        price: 600000,
+        image: "images/products/nuocrua.jpg"
     },
 
     {
         id: 4,
-        name: "Perfume Premium",
-        price: 80,
-        image: "https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1200&auto=format&fit=crop"
+        name: "Serum",
+        price: 800000,
+        image: "images/products/serum.jpg"
     }
 
 ];
@@ -54,7 +54,7 @@ function renderProducts(){
                     </h5>
 
                     <p class="product-price">
-                        $${product.price}
+                        ${product.price.toLocaleString("vi-VN")} VNĐ
                     </p>
 
                    <button 

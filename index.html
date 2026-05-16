@@ -1,110 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
     <title>Cosmetic Shop</title>
 
-    
     <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-    
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+        href="css/style.css">
+
 </head>
+
 <body>
 
-   
-<header>
+    <header>
 
-    
-    <div class="top-bar text-center py-2">
-        Free Shipping for orders over $50
-    </div>
+        <div class="top-bar text-center py-2">
+            Miễn phí vận chuyển cho đơn hàng trên 500.000 VND.
+        </div>
 
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+
+            <div class="container">
+
+                <a class="navbar-brand font-weight-bold"
+                    href="index.html">
+
+                    Cosmetic Shop
+
+                </a>
+
+                <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarContent">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <div class="collapse navbar-collapse"
+                    id="navbarContent">
+
+                    <ul class="navbar-nav mx-auto">
+
+                        <li class="nav-item active">
+
+                            <a class="nav-link"
+                                href="index.html">
+
+                                Home
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                                href="products.html">
+
+                                Products
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                                href="about.html">
+
+                                About
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                                href="contact.html">
+
+                                Contact
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                                href="orders.html">
+
+                                Orders
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                    <form class="form-inline mr-3">
+
+                        <input class="form-control mr-sm-2"
+                            type="search"
+                            placeholder="Search">
+
+                    </form>
+
+                    <div class="nav-icons">
+
+                        <a href="login.html"
+                            class="mr-3 text-dark">
+
+                            <i class="fa-solid fa-user"></i>
+
+                        </a>
+
+                        <a href="cart.html"
+                            class="text-dark position-relative">
+
+                            <i class="fa-solid fa-cart-shopping"></i>
+
+                            <span class="cart-count">
+                                0
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <section class="hero-section">
 
         <div class="container">
 
-            
-            <a class="navbar-brand font-weight-bold" href="#">
-                Cosmetic Shop
-            </a>
+            <div class="row align-items-center">
 
-            
-            <button class="navbar-toggler" type="button"
-                data-toggle="collapse"
-                data-target="#navbarContent">
+                <div class="col-md-6">
 
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                    <h1 class="hero-title">
+                        Nơi vẻ đẹp bắt đầu 
+                    </h1>
 
-            
-            <div class="collapse navbar-collapse" id="navbarContent">
+                    <p class="hero-text">
+                        Khám phá các sản phẩm chăm sóc da và trang điểm cao cấp.
+                    </p>
 
-                
-                <ul class="navbar-nav mx-auto">
+                    <a href="products.html"
+                        class="btn btn-dark btn-lg">
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">
-                            Home
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="products.html">
-                            Products
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">
-                            About
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">
-                            Contact
-                        </a>
-                    </li>
-<li class="nav-item">
-    <a class="nav-link" href="orders.html">
-        Orders
-    </a>
-</li>
-                </ul>
-
-                <!-- SEARCH -->
-                <form class="form-inline mr-3">
-
-                    <input class="form-control mr-sm-2"
-                        type="search"
-                        placeholder="Search">
-
-                </form>
-
-                <!-- ICONS -->
-                <div class="nav-icons">
-
-                    <a href="login.html" class="mr-3 text-dark">
-                        <i class="fa-solid fa-user"></i>
-                    </a>
-
-                    <a href="cart.html" class="text-dark position-relative">
-
-                        <i class="fa-solid fa-cart-shopping"></i>
-
-                        <span class="cart-count">
-                            0
-                        </span>
+                        Mua ngay
 
                     </a>
+
+                </div>
+
+                <div class="col-md-6 text-center">
+
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop"
+                        class="img-fluid hero-image">
 
                 </div>
 
@@ -112,110 +185,89 @@
 
         </div>
 
-    </nav>
+    </section>
 
-</header>
+    <section class="features py-5">
+
+        <div class="container">
+
+            <div class="row text-center">
+
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
 
 
-<section class="hero-section">
+                    <i class="fa-solid fa-truck feature-icon"></i>
 
-    <div class="container">
+                    <h5>
+                        Miễn phí vận chuyển
+                    </h5>
 
-        <div class="row align-items-center">
+                    <p>
+                        Áp dụng cho tất cả các đơn hàng trên 500.000 VND.
+                    </p>
 
-            
-            <div class="col-md-6">
+                </div>
+                </div>
 
-                <h1 class="hero-title">
-                    Beauty Starts Here
-                </h1>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
 
-                <p class="hero-text">
-                    Discover premium skincare and makeup products.
-                </p>
+                    <i class="fa-solid fa-credit-card feature-icon"></i>
 
-                <a href="products.html"
-                    class="btn btn-dark btn-lg">
-                    Shop Now
-                </a>
+                    <h5>
+                        Thanh toán an toàn
+                    </h5>
 
-            </div>
+                    <p>
+                        Thanh toán an toàn 100%
+                    </p>
 
-            
-            <div class="col-md-6 text-center">
+                </div>
+                </div>
 
-                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop"
-                    class="img-fluid hero-image">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
 
-            </div>
+                    <i class="fa-solid fa-headset feature-icon"></i>
 
-        </div>
+                    <h5>
+                        Hỗ trợ 24/7 
+                    </h5>
 
-    </div>
+                    <p>
+                        Hỗ trợ nhiệt tình
+                    </p>
 
-</section>
-
-<section class="features py-5">
-
-    <div class="container">
-
-        <div class="row text-center">
-
-            <div class="col-md-4 mb-4">
-
-                <i class="fa-solid fa-truck feature-icon"></i>
-
-                <h5>Free Shipping</h5>
-
-                <p>For all orders over $50</p>
-
-            </div>
-
-            <div class="col-md-4 mb-4">
-
-                <i class="fa-solid fa-credit-card feature-icon"></i>
-
-                <h5>Secure Payment</h5>
-
-                <p>100% secure payment</p>
-
-            </div>
-
-            <div class="col-md-4 mb-4">
-
-                <i class="fa-solid fa-headset feature-icon"></i>
-
-                <h5>24/7 Support</h5>
-
-                <p>Dedicated support</p>
+                </div>
+                </div>
 
             </div>
 
         </div>
 
-    </div>
-
-</section>
-
-<section class="products py-5">
+    </section>
+    <section class="promo-section">
 
     <div class="container">
 
-        
-        <div class="text-center mb-5">
+        <div class="promo-box text-center">
 
-            <h2 class="section-title">
-                Featured Products
+            <h2>
+                New Beauty Collection 2026
             </h2>
 
-            <p class="text-muted">
-                Discover our latest beauty collection
+            <p>
+                Discover luxury skincare and makeup products
+                with exclusive discounts up to 30%.
             </p>
 
-        </div>
+            <a href="products.html"
+                class="btn btn-light btn-lg">
 
-        
-        <div class="row" id="product-list">
+                Explore Now
+
+            </a>
 
         </div>
 
@@ -223,60 +275,129 @@
 
 </section>
 
-<div class="toast-box">
+    <section class="products py-5">
 
-    Product added to cart!
+        <div class="container">
 
-</div>
+            <div class="text-center mb-5">
 
+                <h2 class="section-title">
+                    Sản phẩm nổi bật
+                </h2>
 
-<footer class="footer">
+                <p class="text-muted">
+                    Khám phá bộ sưu tập làm đẹp mới nhất của chúng tôi
+                </p>
+
+            </div>
+
+            <div class="row"
+                id="product-list">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="toast-box">
+
+        Sản phẩm đã được thêm vào giỏ hàng!
+
+    </div>
+
+    <footer class="footer py-5">
 
     <div class="container">
 
         <div class="row">
 
-            
             <div class="col-md-4 mb-4">
 
-                <h5>Cosmetic Shop</h5>
+                <h4 class="mb-3">
+                    Cosmetic Shop
+                </h4>
 
                 <p>
-                    Premium beauty products for everyone.
+                    Sản phẩm làm đẹp cao cấp với các sản phẩm chăm sóc da hiện đại
+                    và bộ sưu tập trang điểm dành cho mọi người.
+                </p>
+
+                <p>
+
+                    <i class="fa-solid fa-location-dot mr-2"></i>
+
+                    Hanoi, Vietnam
+
+                </p>
+
+                <p>
+
+                    <i class="fa-solid fa-envelope mr-2"></i>
+
+                    goup9@hvnh.edu.vn
+
+                </p>
+
+                <p>
+
+                    <i class="fa-solid fa-phone mr-2"></i>
+
+                    +84 969 503 358
+
                 </p>
 
             </div>
 
-            
             <div class="col-md-4 mb-4">
 
-                <h5>Quick Links</h5>
+                <h4 class="mb-3">
+                    Truy cập nhanh
+                </h4>
 
-                <ul class="list-unstyled">
+                <ul class="list-unstyled footer-links">
 
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.html">
+                            Home
+                        </a>
                     </li>
 
                     <li>
-                        <a href="products.html">Products</a>
+                        <a href="products.html">
+                            Products
+                        </a>
                     </li>
 
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="about.html">
+                            About
+                        </a>
                     </li>
-                    
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="orders.html">
+                            Orders
+                        </a>
+                    </li>
 
                 </ul>
 
             </div>
 
-            
             <div class="col-md-4 mb-4">
 
-                <h5>Follow Us</h5>
+                <h4 class="mb-3">
+                    Theo dõi chúng tôi
+                </h4>
 
-                <div class="social-icons">
+                <div class="social-icons mb-3">
 
                     <a href="#">
                         <i class="fa-brands fa-facebook"></i>
@@ -290,9 +411,32 @@
                         <i class="fa-brands fa-tiktok"></i>
                     </a>
 
+                    <a href="#">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
                 </div>
 
+                <p>
+                    Đăng ký để nhận được cập nhập về những
+                    sản phẩm mới nhất của chúng tôi.
+                    
+                </p>
+
             </div>
+
+        </div>
+
+        <hr class="bg-light">
+
+        <div class="text-center pt-3">
+
+            <p class="mb-0">
+
+                © 2026 Cosmetic Shop 9.
+                
+
+            </p>
 
         </div>
 
@@ -300,26 +444,22 @@
 
 </footer>
 
-
-
-
-
-    
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-    
-    <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js">
-    </script>
-    
     <button id="backToTop">
 
-    <i class="fa-solid fa-arrow-up"></i>
+        <i class="fa-solid fa-arrow-up"></i>
 
-</button>
-<script src="js/main.js"></script>
-<script src="js/products.js"></script>
-    
-     <script src="js/cart.js"></script>
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script src="js/products.js"></script>
+
+    <script src="js/cart.js"></script>
+
 </body>
+
 </html>
