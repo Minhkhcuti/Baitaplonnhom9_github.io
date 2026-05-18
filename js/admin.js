@@ -57,7 +57,7 @@ function renderAdminProducts(){
             </td>
 
             <td>
-                $${product.price}
+                ${product.price.toLocaleString("vi-VN")} VND
             </td>
 
             <td>

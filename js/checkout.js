@@ -14,7 +14,6 @@ const checkoutTotal = document.getElementById(
     "checkout-total"
 );
 
-// RENDER SUMMARY
 function renderCheckout(){
 
     let html = "";
@@ -50,7 +49,6 @@ function renderCheckout(){
 
 renderCheckout();
 
-// CHECKOUT
 const checkoutForm = document.getElementById(
     "checkout-form"
 );
