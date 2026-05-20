@@ -1,7 +1,7 @@
-// ===============================
-// PRODUCTS PAGE - PRO VERSION
-// Bootstrap 4 + LocalStorage
-// ===============================
+// ==========================================================================
+// PRODUCTS PAGE - PRO LOGIC ONLY
+// Bootstrap 4 + LocalStorage (Đồng bộ tuyệt đối cấu trúc HTML mới)
+// ==========================================================================
 
 const PRODUCT_KEY = "products";
 const CART_KEY = "cart";
@@ -44,47 +44,87 @@ function getProducts() {
 
     if (!data) {
         let sampleProducts = [
-    {
-        id: 1,
-        name: "Sữa Tắm Dưỡng Thể Olay",
-        price: 320000,
-        category: "Body Care",
-        image: "images/products/nuoc.jpg",
-        description: "Sữa tắm dưỡng ẩm giúp da mềm mịn và thơm lâu.",
-        stock: 15,
-        tag: "HOT"
-    },
-    {
-        id: 2,
-        name: "Nước Hoa Chanel No.5",
-        price: 2450000,
-        category: "Perfume",
-        image: "images/products/nuochoa.jpg",
-        description: "Nước hoa cao cấp với mùi hương sang trọng và quyến rũ.",
-        stock: 8,
-        tag: "NEW"
-    },
-    {
-        id: 3,
-        name: "Toner Pink AHA BHA",
-        price: 280000,
-        category: "Toner",
-        image: "images/products/nuocrua.jpg",
-        description: "Toner giúp làm sạch sâu, hỗ trợ giảm mụn và cân bằng da.",
-        stock: 20,
-        tag: "HOT"
-    },
-    {
-        id: 4,
-        name: "Serum Brings 70%",
-        price: 450000,
-        category: "Serum",
-        image: "images/products/serum.jpg",
-        description: "Serum dưỡng sáng và phục hồi da, giúp da căng bóng tự nhiên.",
-        stock: 10,
-        tag: "NEW"
-    }
-];
+            {
+                id: 1,
+                name: "Son Kem Lì 3CE Velvet Lip Tint",
+                price: 320000,
+                category: "Lipstick",
+                image: "images/products/son1.jpg",
+                description: "Son kem lì mềm môi, lên màu chuẩn và lâu trôi.",
+                stock: 25,
+                tag: "HOT"
+            },
+            {
+                id: 2,
+                name: "Son Dior Addict Lip Glow",
+                price: 890000,
+                category: "Lipstick",
+                image: "images/products/son2.jpg",
+                description: "Son dưỡng có màu tự nhiên, giúp môi mềm mịn và căng bóng.",
+                stock: 12,
+                tag: "NEW"
+            },
+            {
+                id: 3,
+                name: "Nước Hoa Nữ Chanel No.5",
+                price: 2450000,
+                category: "Perfume",
+                image: "images/products/nuochoa1.jpg",
+                description: "Nước hoa nữ cao cấp với mùi hương sang trọng và quyến rũ.",
+                stock: 8,
+                tag: "HOT"
+            },
+            {
+                id: 4,
+                name: "Nước Hoa Nữ Dior Miss Dior",
+                price: 2650000,
+                category: "Perfume",
+                image: "images/products/nuochoa2.jpg",
+                description: "Nước hoa nữ cao cấp, ngọt ngào và thanh lịch, phù hợp đi chơi và dự tiệc.",
+                stock: 6,
+                tag: "NEW"
+            },
+            {
+                id: 5,
+                name: "Sữa Rửa Mặt CeraVe Foaming Cleanser",
+                price: 280000,
+                category: "Cleanser",
+                image: "images/products/srm2.jpg",
+                description: "Sữa rửa mặt làm sạch sâu, không gây khô da, phù hợp da dầu.",
+                stock: 20,
+                tag: "HOT"
+            },
+            {
+                id: 6,
+                name: "Sữa Rửa Mặt Senka Perfect Whip",
+                price: 150000,
+                category: "Cleanser",
+                image: "images/products/srm1.jpg",
+                description: "Bọt mịn, làm sạch nhẹ nhàng, phù hợp da dầu và hỗn hợp.",
+                stock: 30,
+                tag: "NEW"
+            },
+            {
+                id: 7,
+                name: "Serum Glow Recipe Watermelon Pink Glow",
+                price: 850000,
+                category: "Serum",
+                image: "images/products/serum2.jpg",
+                description: "Serum màu hồng giúp cấp ẩm, làm sáng da và tạo hiệu ứng căng bóng tự nhiên.",
+                stock: 12,
+                tag: "HOT"
+            },
+            {
+                id: 8,
+                name: "Anua Peach 70 Niacin Serum",
+                price: 920000,
+                category: "Serum",
+                image: "images/products/serum1.jpg",
+                description: "Serum phục hồi da, cấp ẩm sâu và giúp da căng mịn, phù hợp da nhạy cảm.",
+                stock: 10,
+                tag: "NEW"
+            }
+        ];
 
         localStorage.setItem(PRODUCT_KEY, JSON.stringify(sampleProducts));
         return sampleProducts;
@@ -121,20 +161,21 @@ function renderProducts(list) {
         }
 
         col.innerHTML = `
-            <div class="card product-card shadow-sm position-relative">
+            <div class="card product-card position-relative">
                 ${badgeHTML}
 
-                <img src="${p.image}" class="card-img-top product-image" alt="${p.name}"
-                     onerror="this.src='https://via.placeholder.com/400x300?text=No+Image';">
-
-                <button class="btn btn-dark btn-sm quick-view-btn" onclick="openDetail(${p.id})"
-                        style="border-radius:50px;">
-                    <i class="fa-solid fa-eye"></i> Quick View
-                </button>
+                <div class="product-image-wrapper">
+                    <img src="${p.image}" class="card-img-top product-image" alt="${p.name}"
+                         onerror="this.src='https://via.placeholder.com/400x300?text=No+Image';">
+                    
+                    <button class="btn quick-view-btn" onclick="openDetail(${p.id})">
+                        <i class="fa-solid fa-eye mr-1"></i> Quick View
+                    </button>
+                </div>
 
                 <div class="card-body text-center">
-                    <h6 class="font-weight-bold mb-1">${p.name}</h6>
-                    <p class="text-muted mb-1" style="font-size:13px;">${p.category}</p>
+                    <p class="product-cat">${p.category}</p>
+                    <h6 class="product-title">${p.name}</h6>
 
                     <div class="rating mb-2">
                         <i class="fa-solid fa-star"></i>
@@ -146,13 +187,12 @@ function renderProducts(list) {
 
                     <p class="product-price mb-2">${formatVND(p.price)}</p>
 
-                    <p class="text-muted mb-2" style="font-size:13px;">
+                    <p class="stock-text mb-3">
                         Tồn kho: <b>${p.stock}</b>
                     </p>
 
-                    <button class="btn btn-outline-dark btn-sm add-cart-btn w-100"
-                        onclick="addToCart(${p.id})">
-                        <i class="fa fa-cart-plus"></i> Thêm vào giỏ
+                    <button class="btn add-cart-btn w-100" onclick="addToCart(${p.id})">
+                        <i class="fa fa-cart-plus mr-1"></i> Thêm vào giỏ
                     </button>
                 </div>
             </div>

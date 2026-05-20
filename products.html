@@ -60,6 +60,7 @@
             border-radius: 18px !important;
             overflow: hidden;
             transition: 0.3s;
+            position: relative;
         }
 
         .product-card:hover {
@@ -69,6 +70,8 @@
 
         .product-image {
             transition: 0.35s;
+            height: 300px;
+            object-fit: cover;
         }
 
         .product-card:hover .product-image {
@@ -84,7 +87,7 @@
             border-radius: 20px;
             color: white;
             font-weight: 600;
-            z-index: 10;
+            z-index: 30;
         }
 
         .badge-hot {
@@ -95,22 +98,39 @@
             background: #111;
         }
 
+        /* FIX QUICK VIEW KHÔNG ĐÈ NÚT THÊM GIỎ */
         .quick-view-btn {
             position: absolute;
-            bottom: 15px;
+            top: 150px;
             left: 50%;
-            transform: translateX(-50%);
-            width: 85%;
+            transform: translate(-50%, -50%);
+            width: 80%;
             opacity: 0;
             transition: 0.3s;
+            z-index: 25;
+            border-radius: 50px;
         }
 
         .product-card:hover .quick-view-btn {
             opacity: 1;
         }
 
-        .stock-text {
-            font-size: 13px;
+        /* overlay mờ khi hover */
+        .product-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 300px;
+            width: 100%;
+            background: rgba(0,0,0,0.35);
+            opacity: 0;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
         }
 
         .modal-product-img {
@@ -183,8 +203,8 @@
                     <div class="col-md-7">
                         <h1>Beauty Products</h1>
                         <p class="mt-3">
-                            Khám phá bộ sưu tập mỹ phẩm cao cấp với mức giá tốt nhất.
-                            Chăm sóc làn da của bạn theo cách hoàn hảo nhất 💖
+                            Khám phá bộ sưu tập mỹ phẩm cao cấp dành cho nữ.
+                            Son, skincare, serum, nước hoa với giá ưu đãi 💖
                         </p>
                         <a href="#productsSection" class="btn btn-light btn-lg mt-3 px-4" style="border-radius:50px;">
                             Mua ngay <i class="fa-solid fa-arrow-right ml-2"></i>
@@ -192,7 +212,9 @@
                     </div>
 
                     <div class="col-md-5 text-center mt-4 mt-md-0">
-                        <img src="images/products/serum.jpg" alt="banner" class="img-fluid rounded shadow" style="max-height:280px; object-fit:cover;">
+                        <img src="images/products/serum1.jpg" alt="banner"
+                             class="img-fluid rounded shadow"
+                             style="max-height:280px; object-fit:cover;">
                     </div>
                 </div>
             </div>
@@ -341,4 +363,3 @@
 
     <script src="js/products.js"></script>
 </body>
-</html>
