@@ -1,9 +1,8 @@
 // ==========================================================================
-// PRODUCTS PAGE - PRO LOGIC ONLY
-// Bootstrap 4 + LocalStorage (Đồng bộ tuyệt đối cấu trúc HTML mới)
+// PRODUCTS PAGE - READ PRODUCTS FROM HTML (THEO YÊU CẦU THẦY)
+// Bootstrap 4 + LocalStorage Cart
 // ==========================================================================
 
-const PRODUCT_KEY = "products";
 const CART_KEY = "cart";
 
 let products = [];
@@ -18,7 +17,7 @@ function formatVND(price) {
 }
 
 // -------------------------------
-// Toast đẹp
+// Toast
 // -------------------------------
 function showToast(message, type = "success") {
     const toast = document.getElementById("toastBox");
@@ -37,104 +36,30 @@ function showToast(message, type = "success") {
 }
 
 // -------------------------------
-// Lấy sản phẩm (nếu chưa có thì tạo mẫu)
+// Load products từ HTML
 // -------------------------------
-function getProducts() {
-    let data = localStorage.getItem(PRODUCT_KEY);
+function getProductsFromHTML() {
+    let items = document.querySelectorAll("#productsData .product-item");
+    let arr = [];
 
-    if (!data) {
-        let sampleProducts = [
-            {
-                id: 1,
-                name: "Son Kem Lì 3CE Velvet Lip Tint",
-                price: 320000,
-                category: "Lipstick",
-                image: "images/products/son1.jpg",
-                description: "Son kem lì mềm môi, lên màu chuẩn và lâu trôi.",
-                stock: 25,
-                tag: "HOT"
-            },
-            {
-                id: 2,
-                name: "Son Dior Addict Lip Glow",
-                price: 890000,
-                category: "Lipstick",
-                image: "images/products/son2.jpg",
-                description: "Son dưỡng có màu tự nhiên, giúp môi mềm mịn và căng bóng.",
-                stock: 12,
-                tag: "NEW"
-            },
-            {
-                id: 3,
-                name: "Nước Hoa Nữ Chanel No.5",
-                price: 2450000,
-                category: "Perfume",
-                image: "images/products/nuochoa1.jpg",
-                description: "Nước hoa nữ cao cấp với mùi hương sang trọng và quyến rũ.",
-                stock: 8,
-                tag: "HOT"
-            },
-            {
-                id: 4,
-                name: "Nước Hoa Nữ Dior Miss Dior",
-                price: 2650000,
-                category: "Perfume",
-                image: "images/products/nuochoa2.jpg",
-                description: "Nước hoa nữ cao cấp, ngọt ngào và thanh lịch, phù hợp đi chơi và dự tiệc.",
-                stock: 6,
-                tag: "NEW"
-            },
-            {
-                id: 5,
-                name: "Sữa Rửa Mặt CeraVe Foaming Cleanser",
-                price: 280000,
-                category: "Cleanser",
-                image: "images/products/srm2.jpg",
-                description: "Sữa rửa mặt làm sạch sâu, không gây khô da, phù hợp da dầu.",
-                stock: 20,
-                tag: "HOT"
-            },
-            {
-                id: 6,
-                name: "Sữa Rửa Mặt Senka Perfect Whip",
-                price: 150000,
-                category: "Cleanser",
-                image: "images/products/srm1.jpg",
-                description: "Bọt mịn, làm sạch nhẹ nhàng, phù hợp da dầu và hỗn hợp.",
-                stock: 30,
-                tag: "NEW"
-            },
-            {
-                id: 7,
-                name: "Serum Glow Recipe Watermelon Pink Glow",
-                price: 850000,
-                category: "Serum",
-                image: "images/products/serum2.jpg",
-                description: "Serum màu hồng giúp cấp ẩm, làm sáng da và tạo hiệu ứng căng bóng tự nhiên.",
-                stock: 12,
-                tag: "HOT"
-            },
-            {
-                id: 8,
-                name: "Anua Peach 70 Niacin Serum",
-                price: 920000,
-                category: "Serum",
-                image: "images/products/serum1.jpg",
-                description: "Serum phục hồi da, cấp ẩm sâu và giúp da căng mịn, phù hợp da nhạy cảm.",
-                stock: 10,
-                tag: "NEW"
-            }
-        ];
+    items.forEach(item => {
+        arr.push({
+            id: parseInt(item.dataset.id),
+            name: item.dataset.name,
+            price: parseInt(item.dataset.price),
+            category: item.dataset.category,
+            image: item.dataset.image,
+            description: item.dataset.desc,
+            stock: parseInt(item.dataset.stock),
+            tag: item.dataset.tag
+        });
+    });
 
-        localStorage.setItem(PRODUCT_KEY, JSON.stringify(sampleProducts));
-        return sampleProducts;
-    }
-
-    return JSON.parse(data);
+    return arr;
 }
 
 // -------------------------------
-// Render sản phẩm
+// Render products
 // -------------------------------
 function renderProducts(list) {
     const productList = document.getElementById("productList");
@@ -164,18 +89,16 @@ function renderProducts(list) {
             <div class="card product-card position-relative">
                 ${badgeHTML}
 
-                <div class="product-image-wrapper">
-                    <img src="${p.image}" class="card-img-top product-image" alt="${p.name}"
-                         onerror="this.src='https://via.placeholder.com/400x300?text=No+Image';">
-                    
-                    <button class="btn quick-view-btn" onclick="openDetail(${p.id})">
-                        <i class="fa-solid fa-eye mr-1"></i> Quick View
-                    </button>
-                </div>
+                <img src="${p.image}" class="card-img-top product-image" alt="${p.name}"
+                     onerror="this.src='https://via.placeholder.com/400x300?text=No+Image';">
+
+                <button class="btn btn-light btn-sm quick-view-btn" onclick="openDetail(${p.id})">
+                    <i class="fa-solid fa-eye"></i> Quick View
+                </button>
 
                 <div class="card-body text-center">
-                    <p class="product-cat">${p.category}</p>
-                    <h6 class="product-title">${p.name}</h6>
+                    <h6 class="font-weight-bold mb-1">${p.name}</h6>
+                    <p class="text-muted mb-1" style="font-size:13px;">${p.category}</p>
 
                     <div class="rating mb-2">
                         <i class="fa-solid fa-star"></i>
@@ -187,12 +110,13 @@ function renderProducts(list) {
 
                     <p class="product-price mb-2">${formatVND(p.price)}</p>
 
-                    <p class="stock-text mb-3">
+                    <p class="text-muted mb-2" style="font-size:13px;">
                         Tồn kho: <b>${p.stock}</b>
                     </p>
 
-                    <button class="btn add-cart-btn w-100" onclick="addToCart(${p.id})">
-                        <i class="fa fa-cart-plus mr-1"></i> Thêm vào giỏ
+                    <button class="btn btn-outline-dark btn-sm w-100"
+                        onclick="addToCart(${p.id})">
+                        <i class="fa fa-cart-plus"></i> Thêm vào giỏ
                     </button>
                 </div>
             </div>
@@ -267,7 +191,7 @@ function openDetail(productId) {
 }
 
 // -------------------------------
-// Buy now -> add cart -> go cart
+// Buy now
 // -------------------------------
 function buyNow(productId) {
     addToCart(productId);
@@ -279,6 +203,8 @@ function buyNow(productId) {
 // -------------------------------
 function loadCategories() {
     let categoryFilter = document.getElementById("categoryFilter");
+    categoryFilter.innerHTML = `<option value="all">Tất cả danh mục</option>`;
+
     let categories = [...new Set(products.map(p => p.category))];
 
     categories.forEach(cat => {
@@ -316,7 +242,7 @@ function applyFilters() {
 // INIT
 // -------------------------------
 document.addEventListener("DOMContentLoaded", function () {
-    products = getProducts();
+    products = getProductsFromHTML();
     filteredProducts = [...products];
 
     renderProducts(filteredProducts);
