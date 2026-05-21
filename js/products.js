@@ -1,24 +1,15 @@
-// ==========================================================================
-// PRODUCTS PAGE - READ PRODUCTS FROM HTML (THEO YÊU CẦU THẦY)
-// Bootstrap 4 + LocalStorage Cart
-// ==========================================================================
-
 const CART_KEY = "cart";
 
 let products = [];
 let filteredProducts = [];
 let selectedProductId = null;
 
-// -------------------------------
-// Format VNĐ
-// -------------------------------
+
 function formatVND(price) {
     return price.toLocaleString("vi-VN") + " ₫";
 }
 
-// -------------------------------
-// Toast
-// -------------------------------
+
 function showToast(message, type = "success") {
     const toast = document.getElementById("toastBox");
 
@@ -35,9 +26,7 @@ function showToast(message, type = "success") {
     }, 1500);
 }
 
-// -------------------------------
-// Load products từ HTML
-// -------------------------------
+
 function getProductsFromHTML() {
     let items = document.querySelectorAll("#productsData .product-item");
     let arr = [];
@@ -58,9 +47,7 @@ function getProductsFromHTML() {
     return arr;
 }
 
-// -------------------------------
-// Render products
-// -------------------------------
+
 function renderProducts(list) {
     const productList = document.getElementById("productList");
     const emptyMessage = document.getElementById("emptyMessage");
@@ -126,9 +113,7 @@ function renderProducts(list) {
     });
 }
 
-// -------------------------------
-// Update cart count
-// -------------------------------
+
 function updateCartCount() {
     let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
 
@@ -138,9 +123,7 @@ function updateCartCount() {
     document.getElementById("cartCount").innerText = totalQuantity;
 }
 
-// -------------------------------
-// Add to cart
-// -------------------------------
+
 function addToCart(productId) {
     let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
     let product = products.find(p => p.id === productId);
@@ -171,9 +154,7 @@ function addToCart(productId) {
     showToast("Đã thêm vào giỏ hàng!");
 }
 
-// -------------------------------
-// Open modal detail
-// -------------------------------
+
 function openDetail(productId) {
     let product = products.find(p => p.id === productId);
     if (!product) return;
@@ -190,17 +171,13 @@ function openDetail(productId) {
     $("#productModal").modal("show");
 }
 
-// -------------------------------
-// Buy now
-// -------------------------------
+
 function buyNow(productId) {
     addToCart(productId);
     window.location.href = "cart.html";
 }
 
-// -------------------------------
-// Load categories
-// -------------------------------
+
 function loadCategories() {
     let categoryFilter = document.getElementById("categoryFilter");
     categoryFilter.innerHTML = `<option value="all">Tất cả danh mục</option>`;
@@ -215,9 +192,6 @@ function loadCategories() {
     });
 }
 
-// -------------------------------
-// Filter + Search + Sort
-// -------------------------------
 function applyFilters() {
     let keyword = document.getElementById("searchInput").value.toLowerCase().trim();
     let category = document.getElementById("categoryFilter").value;
@@ -238,9 +212,7 @@ function applyFilters() {
     renderProducts(filteredProducts);
 }
 
-// -------------------------------
-// INIT
-// -------------------------------
+
 document.addEventListener("DOMContentLoaded", function () {
     products = getProductsFromHTML();
     filteredProducts = [...products];
