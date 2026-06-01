@@ -77,14 +77,15 @@ function renderProducts(list) {
                 ${badgeHTML}
 
                 <img src="${p.image}" class="card-img-top product-image" alt="${p.name}"
-                     onerror="this.src='https://via.placeholder.com/400x300?text=No+Image';">
+                     onerror="this.src='https://via.placeholder.com/400x300?text=No+Image';"
+                     style="cursor: pointer;" onclick="window.location.href='productdetail.html?id=${p.id}'">
 
                 <button class="btn btn-light btn-sm quick-view-btn" onclick="openDetail(${p.id})">
                     <i class="fa-solid fa-eye"></i> Quick View
                 </button>
 
                 <div class="card-body text-center">
-                    <h6 class="font-weight-bold mb-1">${p.name}</h6>
+                    <h6 class="font-weight-bold mb-1" style="cursor: pointer; color: #111;" onclick="window.location.href='productdetail.html?id=${p.id}'">${p.name}</h6>
                     <p class="text-muted mb-1" style="font-size:13px;">${p.category}</p>
 
                     <div class="rating mb-2">
@@ -105,6 +106,10 @@ function renderProducts(list) {
                         onclick="addToCart(${p.id})">
                         <i class="fa fa-cart-plus"></i> Thêm vào giỏ
                     </button>
+                    
+                    <a href="productdetail.html?id=${p.id}" class="d-block mt-2 small text-secondary font-weight-bold">
+                        Xem chi tiết kĩ hơn <i class="fa-solid fa-angle-right" style="font-size:10px;"></i>
+                    </a>
                 </div>
             </div>
         `;
