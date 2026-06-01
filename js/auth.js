@@ -50,7 +50,7 @@ if(registerForm){
 
         alert("Register successful");
 
-        window.location.href = "login.html";
+        window.location.href = "../pages/login.html";
     });
 }
 
@@ -88,11 +88,11 @@ if(loginForm){
 
         if(user.role === "admin"){
 
-            window.location.href = "admin/admin.html";
+            window.location.href = "../admin/admin.html";
 
         }else{
 
-            window.location.href = "index.html";
+            window.location.href = "../index.html";
         }
     });
 }
