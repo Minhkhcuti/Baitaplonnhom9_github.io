@@ -112,5 +112,5 @@ checkoutForm.addEventListener("submit", function(e){
 
     alert("Order placed successfully");
 
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
 });
