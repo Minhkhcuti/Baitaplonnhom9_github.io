@@ -28,6 +28,20 @@
         .form-control:focus { border-color: #ff4d6d; box-shadow: 0 0 0 0.15rem rgba(255,77,109,0.2); }
         .btn-add { background: #ff4d6d; border: none; color: white; border-radius: 50px; padding: 8px 24px; font-weight: 500; }
         .btn-add:hover { background: #e0354f; color: white; }
+        .upload-box {
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .upload-box:hover { border-color: #ff4d6d; }
+        .upload-box.has-image { padding: 10px; }
     </style>
 </head>
 <body>
@@ -112,8 +126,17 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>URL Ảnh <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="product-image" placeholder="../images/products/ten-anh.jpg">
+                        <label>Ảnh sản phẩm <span class="text-danger">*</span></label>
+                        <div class="upload-box" id="uploadBox" onclick="document.getElementById('product-image-file').click()">
+                            <img id="imagePreview" src="" alt="" style="display:none; max-height:140px; border-radius:8px; object-fit:cover;">
+                            <div id="uploadPlaceholder">
+                                <i class="fa-solid fa-cloud-arrow-up" style="font-size:28px; color:#aaa;"></i>
+                                <p class="mb-0 mt-2" style="color:#aaa; font-size:13px;">Nhấn để chọn ảnh</p>
+                            </div>
+                        </div>
+                        <input type="file" id="product-image-file" accept="image/*" style="display:none" onchange="previewImage(this)">
+                        <input type="hidden" id="product-image">
+                        <small class="text-muted">Hỗ trợ JPG, PNG, WEBP. Ảnh được lưu dưới dạng Base64.</small>
                     </div>
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal">Hủy</button>
@@ -130,5 +153,50 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/admin.js"></script>
+<script>
+function previewImage(input) {
+    if (!input.files || !input.files[0]) return;
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const base64 = e.target.result;
+        document.getElementById('product-image').value = base64;
+        const preview = document.getElementById('imagePreview');
+        const placeholder = document.getElementById('uploadPlaceholder');
+        const box = document.getElementById('uploadBox');
+        preview.src = base64;
+        preview.style.display = 'block';
+        placeholder.style.display = 'none';
+        box.classList.add('has-image');
+    };
+    reader.readAsDataURL(file);
+}
+
+// Reset ô upload khi đóng modal
+$('#productModal').on('hidden.bs.modal', function() {
+    document.getElementById('imagePreview').style.display = 'none';
+    document.getElementById('imagePreview').src = '';
+    document.getElementById('uploadPlaceholder').style.display = 'block';
+    document.getElementById('uploadBox').classList.remove('has-image');
+    document.getElementById('product-image-file').value = '';
+    document.getElementById('product-image').value = '';
+});
+
+// Khi mở modal Sửa: hiển thị ảnh cũ nếu có
+const _origOpenEditModal = openEditModal;
+openEditModal = function(id) {
+    _origOpenEditModal(id);
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const p = products.find(p => p.id === id);
+    if (p && p.image) {
+        const preview = document.getElementById('imagePreview');
+        const placeholder = document.getElementById('uploadPlaceholder');
+        preview.src = p.image;
+        preview.style.display = 'block';
+        placeholder.style.display = 'none';
+        document.getElementById('uploadBox').classList.add('has-image');
+    }
+};
+</script>
 </body>
 </html>

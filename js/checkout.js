@@ -1,7 +1,14 @@
+// ============================================================
+// checkout.js — Logic trang Thanh toán (checkout.html)
+// ============================================================
+
 const CART_KEY = "cart";
 
 let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+
+// ---------- Tiện ích ----------
 
 function formatVND(price) {
     return price.toLocaleString("vi-VN") + " ₫";
@@ -31,6 +38,9 @@ function validatePhone(phone) {
     return /^(0|\+84)[0-9]{9,10}$/.test(phone.replace(/\s/g, ""));
 }
 
+
+// ---------- Render tóm tắt đơn hàng ----------
+
 function renderCheckout() {
     const checkoutItems = document.getElementById("checkout-items");
     const checkoutTotal = document.getElementById("checkout-total");
@@ -38,6 +48,7 @@ function renderCheckout() {
 
     if (!checkoutItems) return;
 
+    // Guard: giỏ rỗng
     if (cart.length === 0) {
         checkoutItems.innerHTML = `
             <div class="text-center py-4">
@@ -56,7 +67,7 @@ function renderCheckout() {
     let total = 0;
 
     cart.forEach(item => {
-        const subtotal = item.price * item.quantity;
+        const subtotal = Number(item.price) * Number(item.quantity);
         total += subtotal;
         html += `
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -77,6 +88,9 @@ function renderCheckout() {
     checkoutItems.innerHTML = html;
     if (checkoutTotal) checkoutTotal.innerText = formatVND(total);
 }
+
+
+// ---------- Xử lý form ----------
 
 const checkoutForm = document.getElementById("checkout-form");
 
@@ -115,7 +129,7 @@ if (checkoutForm) {
 
         if (hasError) return;
 
-        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        const total = cart.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
 
         const newOrder = {
             id: Date.now(),
@@ -130,6 +144,7 @@ if (checkoutForm) {
         localStorage.setItem("orders", JSON.stringify(orders));
         localStorage.removeItem(CART_KEY);
 
+        // Thông báo thành công thay vì alert cũ
         checkoutForm.innerHTML = `
             <div class="text-center py-5">
                 <i class="fa-solid fa-circle-check" style="font-size:60px; color:#28a745;"></i>
@@ -145,5 +160,8 @@ if (checkoutForm) {
             </div>`;
     });
 }
+
+
+// ---------- Khởi tạo ----------
 
 renderCheckout();

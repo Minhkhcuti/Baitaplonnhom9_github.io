@@ -120,13 +120,19 @@ function renderOrders() {
         return;
     }
 
-    tbody.innerHTML = orders.map((order, idx) => `
+    tbody.innerHTML = orders.map((order, idx) => {
+        // Tính lại total từ items nếu total bị lưu sai (0 hoặc NaN)
+        const total = (order.total && order.total > 0)
+            ? order.total
+            : (order.items || []).reduce((s, i) => s + Number(i.price) * Number(i.quantity), 0);
+
+        return `
         <tr>
             <td><b>#${order.id}</b></td>
             <td>${order.customer ? order.customer.name : "—"}</td>
             <td>${order.customer ? order.customer.phone : "—"}</td>
             <td>${order.date || "—"}</td>
-            <td style="color:#ff4d6d; font-weight:600;">${formatVND(order.total || 0)}</td>
+            <td style="color:#ff4d6d; font-weight:600;">${formatVND(total)}</td>
             <td>
                 <select class="status-select" onchange="updateStatus(${idx}, this.value)">
                     <option ${order.status === "Đang xử lý"  ? "selected" : ""}>Đang xử lý</option>
@@ -140,8 +146,8 @@ function renderOrders() {
                     <i class="fa-solid fa-eye"></i>
                 </button>
             </td>
-        </tr>
-    `).join("");
+        </tr>`; 
+    }).join("");
 }
 
 function updateStatus(idx, status) {
@@ -157,10 +163,14 @@ function viewDetail(idx) {
 
     document.getElementById("detailModalTitle").innerText = "Đơn hàng #" + order.id;
 
+    const total = (order.total && order.total > 0)
+        ? order.total
+        : (order.items || []).reduce((s, i) => s + Number(i.price) * Number(i.quantity), 0);
+
     const itemsHTML = (order.items || []).map(item => `
         <div class="order-item-row">
             <span>${item.name} x${item.quantity}</span>
-            <span style="color:#ff4d6d;">${formatVND(item.price * item.quantity)}</span>
+            <span style="color:#ff4d6d;">${formatVND(Number(item.price) * Number(item.quantity))}</span>
         </div>
     `).join("");
 
@@ -175,7 +185,7 @@ function viewDetail(idx) {
         <hr>
         <div class="d-flex justify-content-between font-weight-bold">
             <span>Tổng cộng:</span>
-            <span style="color:#ff4d6d;">${formatVND(order.total || 0)}</span>
+            <span style="color:#ff4d6d;">${formatVND(total)}</span>
         </div>
     `;
 
