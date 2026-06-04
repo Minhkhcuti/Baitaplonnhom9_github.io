@@ -975,11 +975,6 @@ body{
 }
 /*thuytien */
 
-/* ============================================================
-   Bổ sung — styles sửa theo code review
-   ============================================================ */
-
-/* Auth pages */
 .auth-page {
     min-height: calc(100vh - 60px);
     background: #fff0f3;
@@ -1011,7 +1006,6 @@ body{
     box-shadow: none;
 }
 
-/* Cart item */
 .cart-item {
     background: white;
     border-radius: 16px;
@@ -1025,13 +1019,10 @@ body{
     width: 100%;
 }
 
-/* badge-new màu xanh để phân biệt với badge-hot đỏ */
 .badge-new { background: #28a745; }
 
-/* Rating stars */
 .rating i { color: #ffc107; font-size: 13px; }
 
-/* Modal product */
 .modal-product-img {
     width: 100%;
     border-radius: 12px;
@@ -1047,7 +1038,6 @@ body{
 
 .stock-text { color: #28a745; font-size: 14px; }
 
-/* Showcase cards (homepage) */
 .showcase-card {
     display: block;
     position: relative;
@@ -1081,7 +1071,6 @@ body{
 .showcase-overlay h4 { margin: 0 0 4px; font-weight: 600; }
 .showcase-overlay p  { margin: 0; font-size: 13px; opacity: 0.85; }
 
-/* Promo section */
 .promo-section { padding: 60px 0; background: #f8f9fa; }
 
 .promo-box {
@@ -1110,7 +1099,6 @@ body{
     border-radius: 20px;
 }
 
-/* Footer */
 .footer { background: #0f0f0f; color: white; }
 .footer-links li { margin-bottom: 8px; }
 .footer-links a { color: #aaa; text-decoration: none; transition: 0.2s; }
@@ -1136,7 +1124,6 @@ body{
     border-color: #ff4d6d;
 }
 
-/* Back to top */
 #backToTop {
     position: fixed;
     bottom: 30px;
@@ -1157,7 +1144,6 @@ body{
 
 #backToTop:hover { background: #ff4d6d; transform: translateY(-3px); }
 
-/* Products page hero */
 .products-page .products-hero {
     background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
     border-radius: 24px;
@@ -1167,7 +1153,6 @@ body{
 
 .products-page .products-hero h1 { font-size: 42px; font-weight: 700; }
 
-/* Filter box */
 .filter-box {
     background: white;
     border-radius: 16px;

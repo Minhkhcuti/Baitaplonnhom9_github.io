@@ -67,8 +67,6 @@
 </div>
 
 <div class="content-area">
-
-    <!-- Thống kê -->
     <div class="row mb-4">
         <div class="col-md-3 mb-3">
             <div class="stat-card">
@@ -96,7 +94,6 @@
         </div>
     </div>
 
-    <!-- Bảng sản phẩm -->
     <div class="table-card">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h5 class="mb-0 font-weight-bold">Danh sách sản phẩm</h5>
@@ -124,7 +121,6 @@
 
 </div>
 
-<!-- Modal Thêm / Sửa sản phẩm -->
 <div class="modal fade" id="productModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -184,7 +180,7 @@
 <script src="../js/admin.js"></script>
 
 <script>
-// Hiển thị tên admin đang đăng nhập
+
 (function() {
     const user = JSON.parse(localStorage.getItem("currentUser"));
     if (user) document.getElementById("adminWelcome").innerText = "Xin chào, " + user.name;
