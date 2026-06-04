@@ -44,6 +44,11 @@ function addToCart(productId) {
     const exist = cart.find(item => item.id === productId);
 
     if (exist) {
+        // SỬA LỖI: Kiểm tra xem số lượng định thêm có vượt số lượng tồn kho hay không
+        if (exist.quantity + 1 > product.stock) {
+            showToast(`Số lượng trong giỏ đã đạt mức tối đa của kho (${product.stock})!`, "error");
+            return;
+        }
         exist.quantity += 1;
     } else {
         cart.push({
@@ -61,6 +66,20 @@ function addToCart(productId) {
 }
 
 function buyNow(productId) {
+    // SỬA LỖI: Chỉ chuyển hướng khi thêm thành công và không vượt kho
+    const product = products.find(p => p.id === productId);
+    if (!product || product.stock <= 0) {
+        showToast("Sản phẩm không có sẵn!", "error");
+        return;
+    }
+    
+    const cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    const exist = cart.find(item => item.id === productId);
+    if (exist && exist.quantity + 1 > product.stock) {
+        showToast(`Số lượng trong giỏ đã đạt mức tối đa của kho (${product.stock})!`, "error");
+        return;
+    }
+
     addToCart(productId);
     window.location.href = "cart.html";
 }
@@ -151,7 +170,22 @@ function openDetail(productId) {
     document.getElementById("modalCategory").innerText = product.category;
     document.getElementById("modalPrice").innerText = formatVND(product.price);
     document.getElementById("modalDesc").innerText = product.description;
-    document.getElementById("modalStock").innerText = product.stock > 0 ? product.stock : "Hết hàng";
+    
+    const stockEl = document.getElementById("modalStock");
+    const modalBuyBtn = document.getElementById("btnBuyNow");
+    const modalAddBtn = document.getElementById("btnAddCart");
+
+    if (product.stock > 0) {
+        stockEl.innerText = product.stock;
+        stockEl.style.color = "#28a745";
+        modalBuyBtn.disabled = false;
+        modalAddBtn.disabled = false;
+    } else {
+        stockEl.innerText = "Hết hàng";
+        stockEl.style.color = "#ff4d6d";
+        modalBuyBtn.disabled = true;
+        modalAddBtn.disabled = true;
+    }
 
     $("#productModal").modal("show");
 }
@@ -179,8 +213,14 @@ function applyFilters() {
         return matchKeyword && matchCategory;
     });
 
-    if (sort === "asc") filteredProducts.sort((a, b) => a.price - b.price);
-    else if (sort === "desc") filteredProducts.sort((a, b) => b.price - a.price);
+    if (sort === "asc") {
+        filteredProducts.sort((a, b) => a.price - b.price);
+    } else if (sort === "desc") {
+        filteredProducts.sort((a, b) => b.price - a.price);
+    } else {
+        // SỬA LỖI: Đưa về thứ tự mặc định theo ID ban đầu khi chọn "Sắp xếp theo giá" mặc định
+        filteredProducts.sort((a, b) => a.id - b.id);
+    }
 
     renderProducts(filteredProducts);
 }
@@ -205,6 +245,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.getElementById("btnBuyNow").addEventListener("click", function () {
-        if (selectedProductId != null) buyNow(selectedProductId);
+        if (selectedProductId != null) {
+            buyNow(selectedProductId);
+        }
     });
 });

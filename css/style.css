@@ -90,6 +90,7 @@ body {
     border-radius: 10px;
     display: none;
     z-index: 9999;
+    transition: opacity 0.3s ease;
 }
 
 /* ==========================================================================
@@ -363,7 +364,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 300px;
+    height: 320px; /* SỬA LỖI: Chỉnh từ 300px lên 320px để khớp khít khát với ảnh sản phẩm */
     background: rgba(0,0,0,0.35);
     opacity: 0;
     transition: 0.3s;
@@ -392,7 +393,7 @@ body {
 
 .quick-view-btn {
     position: absolute;
-    top: 150px;
+    top: 160px; /* Căn giữa hoàn hảo vùng ảnh */
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
