@@ -224,8 +224,17 @@
 
             let exist = cart.find(item => item.id === productId);
             if (exist) {
+                // SỬA LỖI: Kiểm tra giới hạn kho khi mua số lượng lớn
+                if (exist.quantity + buyQuantity > product.stock) {
+                    showToast(`Không thể thêm! Tổng số lượng trong giỏ sẽ vượt giới hạn kho (${product.stock}).`, "error");
+                    return false;
+                }
                 exist.quantity += buyQuantity;
             } else {
+                if (buyQuantity > product.stock) {
+                    showToast(`Số lượng chọn vượt quá tồn kho hiện tại (${product.stock})!`, "error");
+                    return false;
+                }
                 cart.push({
                     id: product.id,
                     name: product.name,
@@ -243,7 +252,6 @@
             products = getProductsFromHTML();
             updateCartCount();
 
-            // Lấy ID từ URL (?id=X)
             const urlParams = new URLSearchParams(window.location.search);
             const productId = parseInt(urlParams.get("id"));
             currentProduct = products.find(p => p.id === productId);
@@ -260,39 +268,60 @@
             document.getElementById("detailCategory").innerText = currentProduct.category;
             document.getElementById("detailPrice").innerText = formatVND(currentProduct.price);
             document.getElementById("detailDesc").innerText = currentProduct.description;
-            document.getElementById("detailStock").innerText = currentProduct.stock > 0 ? `${currentProduct.stock} sản phẩm` : "Hết hàng";
             document.getElementById("detailImage").src = currentProduct.image;
 
-            // Xử lý nút tăng giảm số lượng
+            const stockEl = document.getElementById("detailStock");
             const inputQty = document.getElementById("inputQty");
-            document.getElementById("btnMinus").addEventListener("click", function() {
-                let val = parseInt(inputQty.value);
-                if (val > 1) inputQty.value = val - 1;
-            });
-            document.getElementById("btnPlus").addEventListener("click", function() {
-                let val = parseInt(inputQty.value);
-                if (val < currentProduct.stock) {
-                    inputQty.value = val + 1;
-                } else {
-                    showToast("Đã đạt giới hạn tồn kho!", "error");
-                }
-            });
+            const btnBuyNowDetail = document.getElementById("btnBuyNowDetail");
+            const btnAddCartDetail = document.getElementById("btnAddCartDetail");
 
-            // Sự kiện Thêm vào giỏ
-            document.getElementById("btnAddCartDetail").addEventListener("click", function() {
-                let qty = parseInt(inputQty.value);
-                if(addToCart(currentProduct.id, qty)) {
-                    showToast(`Đã thêm ${qty} sản phẩm vào giỏ hàng!`);
-                }
-            });
+            // SỬA LỖI: Khóa tương tác hoàn toàn nếu sản phẩm hết hàng ngay khi tải trang
+            if (currentProduct.stock <= 0) {
+                stockEl.innerText = "Hết hàng";
+                stockEl.className = "text-danger";
+                inputQty.value = 0;
+                
+                btnBuyNowDetail.disabled = true;
+                btnBuyNowDetail.innerText = "Hết hàng";
+                btnBuyNowDetail.className = "btn btn-secondary px-5 py-2";
 
-            // Sự kiện Mua ngay
-            document.getElementById("btnBuyNowDetail").addEventListener("click", function() {
-                let qty = parseInt(inputQty.value);
-                if(addToCart(currentProduct.id, qty)) {
-                    window.location.href = "cart.html";
-                }
-            });
+                btnAddCartDetail.disabled = true;
+                btnAddCartDetail.innerText = "Hết hàng";
+                btnAddCartDetail.className = "btn btn-secondary px-5 py-2 ml-2";
+            } else {
+                stockEl.innerText = `${currentProduct.stock} sản phẩm`;
+                stockEl.className = "text-success";
+
+                document.getElementById("btnMinus").addEventListener("click", function() {
+                    let val = parseInt(inputQty.value);
+                    if (val > 1) inputQty.value = val - 1;
+                });
+
+                document.getElementById("btnPlus").addEventListener("click", function() {
+                    let val = parseInt(inputQty.value);
+                    if (val < currentProduct.stock) {
+                        inputQty.value = val + 1;
+                    } else {
+                        showToast("Đã đạt giới hạn tồn kho!", "error");
+                    }
+                });
+
+                // Sự kiện Thêm vào giỏ
+                btnAddCartDetail.addEventListener("click", function() {
+                    let qty = parseInt(inputQty.value);
+                    if(addToCart(currentProduct.id, qty)) {
+                        showToast(`Đã thêm ${qty} sản phẩm vào giỏ hàng!`);
+                    }
+                });
+
+                // Sự kiện Mua ngay
+                btnBuyNowDetail.addEventListener("click", function() {
+                    let qty = parseInt(inputQty.value);
+                    if(addToCart(currentProduct.id, qty)) {
+                        window.location.href = "cart.html";
+                    }
+                });
+            }
         });
     </script>
 </body>
