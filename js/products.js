@@ -1,5 +1,5 @@
 const CART_KEY = "cart";
-
+const params = new URLSearchParams(window.location.search); const qParam = params.get("q"); if (qParam) document.getElementById("searchInput").value = qParam;
 let products = [];
 let filteredProducts = [];
 let selectedProductId = null;
@@ -44,7 +44,6 @@ function addToCart(productId) {
     const exist = cart.find(item => item.id === productId);
 
     if (exist) {
-        // SỬA LỖI: Kiểm tra xem số lượng định thêm có vượt số lượng tồn kho hay không
         if (exist.quantity + 1 > product.stock) {
             showToast(`Số lượng trong giỏ đã đạt mức tối đa của kho (${product.stock})!`, "error");
             return;
@@ -66,7 +65,6 @@ function addToCart(productId) {
 }
 
 function buyNow(productId) {
-    // SỬA LỖI: Chỉ chuyển hướng khi thêm thành công và không vượt kho
     const product = products.find(p => p.id === productId);
     if (!product || product.stock <= 0) {
         showToast("Sản phẩm không có sẵn!", "error");
@@ -113,7 +111,7 @@ function renderProducts(list) {
 
     list.forEach(p => {
         const col = document.createElement("div");
-        col.className = "col-lg-3 col-md-6 mb-4";
+        col.className = "col-6 col-md-4 col-lg-3 mb-4";
 
         let badgeHTML = "";
         if (p.tag === "HOT") badgeHTML = `<span class="badge-custom badge-hot">HOT</span>`;

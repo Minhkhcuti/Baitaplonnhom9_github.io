@@ -19,3 +19,10 @@ function updateCartCount() {
 }
 
 updateCartCount();
+(function initAdmin() {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    if (!users.find(u => u.email === "admin@gmail.com")) {
+        users.push({ name: "Admin", email: "admin@gmail.com", password: "admin123", role: "admin" });
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+})();

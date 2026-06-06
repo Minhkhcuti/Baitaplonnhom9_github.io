@@ -118,13 +118,7 @@
 
                     </ul>
 
-                    <form class="form-inline mr-3">
-
-                        <input class="form-control mr-sm-2"
-                            type="search"
-                            placeholder="Search">
-
-                    </form>
+                    <form class="form-inline mr-3" onsubmit="goSearch(event)"> <input class="form-control mr-sm-2" type="search" id="headerSearch" placeholder="Search sản phẩm..."> </form> <script> function goSearch(e) { e.preventDefault(); const q = document.getElementById("headerSearch").value.trim(); if (q) window.location.href = "pages/products.html?q=" + encodeURIComponent(q); } </script>
 
                     <div class="nav-icons">
 
