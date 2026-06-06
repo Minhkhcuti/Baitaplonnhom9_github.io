@@ -6,7 +6,7 @@
     );
     window.location.href = "../pages/login.html";
   }
-})();
+});
 
 const DEFAULT_PRODUCTS = [
   {
