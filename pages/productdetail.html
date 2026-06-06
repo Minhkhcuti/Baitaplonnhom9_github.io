@@ -1,328 +1,480 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Detail | Cosmetic Shop</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
 
     <style>
-        .product-detail-container {
-            background: #ffffff;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        .detail-product-img {
-            width: 100%;
-            max-height: 450px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        .detail-price {
-            font-size: 26px;
-            font-weight: 700;
-            color: #ff4d6d;
-        }
-        .quantity-wrapper {
-            display: flex;
-            align-items: center;
-            max-width: 130px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-        .quantity-wrapper button {
-            border: none;
-            background: #f8f9fa;
-            width: 40px;
-            height: 38px;
-            font-weight: bold;
-        }
-        .quantity-wrapper input {
-            border: none;
-            text-align: center;
-            width: 50px;
-            height: 38px;
-            font-weight: 600;
-        }
+      .product-detail-container {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      }
+      .detail-product-img {
+        width: 100%;
+        max-height: 450px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      .detail-price {
+        font-size: 26px;
+        font-weight: 700;
+        color: #ff4d6d;
+      }
+      .quantity-wrapper {
+        display: flex;
+        align-items: center;
+        max-width: 130px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      .quantity-wrapper button {
+        border: none;
+        background: #f8f9fa;
+        width: 40px;
+        height: 38px;
+        font-weight: bold;
+      }
+      .quantity-wrapper input {
+        border: none;
+        text-align: center;
+        width: 50px;
+        height: 38px;
+        font-weight: 600;
+      }
     </style>
-</head>
-<body class="products-page">
-
+  </head>
+  <body class="products-page">
     <div class="top-bar py-2 text-center">
-        <span>🌸 Cosmetic Shop - Mỹ phẩm chính hãng, ưu đãi mỗi ngày</span>
+      <span>🌸 Cosmetic Shop - Mỹ phẩm chính hãng, ưu đãi mỗi ngày</span>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-        <div class="container">
-            <a class="navbar-brand font-weight-bold" href="../index.html">Cosmetic Shop</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ml-auto align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link font-weight-bold" href="../index.html">Home</a></li>
-                    <li class="nav-item active"><a class="nav-link font-weight-bold" href="products.html">Products</a></li>
-                    <li class="nav-item"><a class="nav-link font-weight-bold" href="orders.html">Orders</a></li>
-                    <li class="nav-item mx-2 position-relative">
-                        <a class="nav-link nav-icons" href="cart.html">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <span class="cart-count" id="cartCount">0</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-dark btn-sm px-3" href="login.html">Login</a>
-                    </li>
-                </ul>
-            </div>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand font-weight-bold" href="../index.html"
+          >Cosmetic Shop</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ml-auto align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link font-weight-bold" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link font-weight-bold" href="products.html"
+                >Products</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link font-weight-bold" href="orders.html">Orders</a>
+            </li>
+            <li class="nav-item mx-2 position-relative">
+              <a class="nav-link nav-icons" href="cart.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count" id="cartCount">0</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-outline-dark btn-sm px-3" href="login.html"
+                >Login</a
+              >
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <div class="container mt-4">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-transparent p-0">
-                <li class="breadcrumb-item"><a href="products.html" class="text-muted">Sản phẩm</a></li>
-                <li class="breadcrumb-item active text-dark font-weight-bold" id="breadcrumbName" aria-current="page">Chi tiết sản phẩm</li>
-            </ol>
-        </nav>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent p-0">
+          <li class="breadcrumb-item">
+            <a href="products.html" class="text-muted">Sản phẩm</a>
+          </li>
+          <li
+            class="breadcrumb-item active text-dark font-weight-bold"
+            id="breadcrumbName"
+            aria-current="page"
+          >
+            Chi tiết sản phẩm
+          </li>
+        </ol>
+      </nav>
     </div>
 
     <section class="pb-5">
-        <div class="container">
-            <div class="product-detail-container">
-                <div class="row">
-                    <div class="col-md-5 mb-4 mb-md-0">
-                        <img id="detailImage" src="https://via.placeholder.com/400x300?text=Loading..." class="detail-product-img" alt="Product Image">
-                    </div>
-
-                    <div class="col-md-7">
-                        <p class="text-muted mb-1" style="font-size: 14px;">Danh mục: <b id="detailCategory">...</b></p>
-                        <h2 class="font-weight-bold mb-3" id="detailName">Tên sản phẩm</h2>
-
-                        <div class="rating mb-3">
-                            <i class="fa-solid fa-star" style="color: #ffcc00;"></i>
-                            <i class="fa-solid fa-star" style="color: #ffcc00;"></i>
-                            <i class="fa-solid fa-star" style="color: #ffcc00;"></i>
-                            <i class="fa-solid fa-star" style="color: #ffcc00;"></i>
-                            <i class="fa-regular fa-star" style="color: #ffcc00;"></i>
-                            <span class="ml-2 text-muted" style="font-size:13px;">(Chính hãng 100%)</span>
-                        </div>
-
-                        <p class="detail-price mb-3" id="detailPrice">0 ₫</p>
-                        
-                        <h6 class="font-weight-bold text-dark mb-2">Mô tả sản phẩm:</h6>
-                        <p id="detailDesc" class="text-muted mb-4" style="line-height: 1.6;"></p>
-
-                        <p class="text-muted mb-4" style="font-size:14px;">
-                            Tình trạng kho: <b id="detailStock" class="text-dark">...</b>
-                        </p>
-
-                        <div class="d-flex align-items-center mb-4">
-                            <span class="font-weight-bold mr-3" style="font-size: 14px;">Số lượng:</span>
-                            <div class="quantity-wrapper">
-                                <button type="button" id="btnMinus">-</button>
-                                <input type="text" id="inputQty" value="1" readonly>
-                                <button type="button" id="btnPlus">+</button>
-                            </div>
-                        </div>
-
-                        <div class="mt-4">
-                            <button class="btn btn-dark px-5 py-2" id="btnBuyNowDetail" style="border-radius:50px;">
-                                <i class="fa-solid fa-bag-shopping"></i> Mua ngay
-                            </button>
-                            <button class="btn btn-danger px-5 py-2 ml-2" id="btnAddCartDetail" style="border-radius:50px;">
-                                <i class="fa fa-cart-plus"></i> Thêm vào giỏ
-                            </button>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="product-detail-container">
+          <div class="row">
+            <div class="col-md-5 mb-4 mb-md-0">
+              <img
+                id="detailImage"
+                src="https://via.placeholder.com/400x300?text=Loading..."
+                class="detail-product-img"
+                alt="Product Image"
+              />
             </div>
+
+            <div class="col-md-7">
+              <p class="text-muted mb-1" style="font-size: 14px">
+                Danh mục: <b id="detailCategory">...</b>
+              </p>
+              <h2 class="font-weight-bold mb-3" id="detailName">
+                Tên sản phẩm
+              </h2>
+
+              <div class="rating mb-3">
+                <i class="fa-solid fa-star" style="color: #ffcc00"></i>
+                <i class="fa-solid fa-star" style="color: #ffcc00"></i>
+                <i class="fa-solid fa-star" style="color: #ffcc00"></i>
+                <i class="fa-solid fa-star" style="color: #ffcc00"></i>
+                <i class="fa-regular fa-star" style="color: #ffcc00"></i>
+                <span class="ml-2 text-muted" style="font-size: 13px"
+                  >(Chính hãng 100%)</span
+                >
+              </div>
+
+              <p class="detail-price mb-3" id="detailPrice">0 ₫</p>
+
+              <h6 class="font-weight-bold text-dark mb-2">Mô tả sản phẩm:</h6>
+              <p
+                id="detailDesc"
+                class="text-muted mb-4"
+                style="line-height: 1.6"
+              ></p>
+
+              <p class="text-muted mb-4" style="font-size: 14px">
+                Tình trạng kho: <b id="detailStock" class="text-dark">...</b>
+              </p>
+
+              <div class="d-flex align-items-center mb-4">
+                <span class="font-weight-bold mr-3" style="font-size: 14px"
+                  >Số lượng:</span
+                >
+                <div class="quantity-wrapper">
+                  <button type="button" id="btnMinus">-</button>
+                  <input type="text" id="inputQty" value="1" readonly />
+                  <button type="button" id="btnPlus">+</button>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <button
+                  class="btn btn-dark px-5 py-2"
+                  id="btnBuyNowDetail"
+                  style="border-radius: 50px"
+                >
+                  <i class="fa-solid fa-bag-shopping"></i> Mua ngay
+                </button>
+                <button
+                  class="btn btn-danger px-5 py-2 ml-2"
+                  id="btnAddCartDetail"
+                  style="border-radius: 50px"
+                >
+                  <i class="fa fa-cart-plus"></i> Thêm vào giỏ
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <div id="productsData" style="display:none;">
-        <div class="product-item" data-id="1" data-name="Son Kem Lì 3CE Velvet Lip Tint" data-price="320000" data-category="Lipstick" data-image="../images/products/son1.jpg" data-desc="Son kem lì mềm môi, lên màu chuẩn và lâu trôi." data-stock="25" data-tag="HOT"></div>
-        <div class="product-item" data-id="2" data-name="Son Dior Addict Lip Glow" data-price="890000" data-category="Lipstick" data-image="../images/products/son2.jpg" data-desc="Son dưỡng có màu tự nhiên, giúp môi mềm mịn và căng bóng." data-stock="12" data-tag="NEW"></div>
-        <div class="product-item" data-id="3" data-name="Nước Hoa Nữ Chanel No.5" data-price="2450000" data-category="Perfume" data-image="../images/products/nuochoa1.jpg" data-desc="Nước hoa nữ cao cấp với mùi hương sang trọng và quyến rũ." data-stock="8" data-tag="HOT"></div>
-        <div class="product-item" data-id="4" data-name="Nước Hoa Nữ Dior Miss Dior" data-price="2650000" data-category="Perfume" data-image="../images/products/nuochoa2.jpg" data-desc="Nước hoa nữ cao cấp, ngọt ngào và thanh lịch, phù hợp đi chơi và dự tiệc." data-stock="6" data-tag="NEW"></div>
-        <div class="product-item" data-id="5" data-name="Sữa Rửa Mặt CeraVe Foaming Cleanser" data-price="280000" data-category="Cleanser" data-image="../images/products/srm2.jpg" data-desc="Sữa rửa mặt làm sạch sâu, không gây khô da, phù hợp da dầu." data-stock="20" data-tag="HOT"></div>
-        <div class="product-item" data-id="6" data-name="Sữa Rửa Mặt Senka Perfect Whip" data-price="150000" data-category="Cleanser" data-image="../images/products/srm1.jpg" data-desc="Bọt mịn, làm sạch nhẹ nhàng, phù hợp da dầu và hỗn hợp." data-stock="30" data-tag="NEW"></div>
-        <div class="product-item" data-id="7" data-name="Serum Glow Recipe Watermelon Pink Glow" data-price="850000" data-category="Serum" data-image="../images/products/serum2.jpg" data-desc="Serum màu hồng giúp cấp ẩm, làm sáng da và tạo hiệu ứng căng bóng tự nhiên." data-stock="12" data-tag="HOT"></div>
-        <div class="product-item" data-id="8" data-name="Anua Peach 70 Niacin Serum" data-price="920000" data-category="Serum" data-image="../images/products/serum1.jpg" data-desc="Serum dưỡng sáng, giúp da đều màu và căng bóng, phù hợp da nhạy cảm." data-stock="10" data-tag="NEW"></div>
+    <div id="productsData" style="display: none">
+      <div
+        class="product-item"
+        data-id="1"
+        data-name="Son Kem Lì 3CE Velvet Lip Tint"
+        data-price="320000"
+        data-category="Lipstick"
+        data-image="../images/products/son1.jpg"
+        data-desc="Son kem lì mềm môi, lên màu chuẩn và lâu trôi."
+        data-stock="25"
+        data-tag="HOT"
+      ></div>
+      <div
+        class="product-item"
+        data-id="2"
+        data-name="Son Dior Addict Lip Glow"
+        data-price="890000"
+        data-category="Lipstick"
+        data-image="../images/products/son2.jpg"
+        data-desc="Son dưỡng có màu tự nhiên, giúp môi mềm mịn và căng bóng."
+        data-stock="12"
+        data-tag="NEW"
+      ></div>
+      <div
+        class="product-item"
+        data-id="3"
+        data-name="Nước Hoa Nữ Chanel No.5"
+        data-price="2450000"
+        data-category="Perfume"
+        data-image="../images/products/nuochoa1.jpg"
+        data-desc="Nước hoa nữ cao cấp với mùi hương sang trọng và quyến rũ."
+        data-stock="8"
+        data-tag="HOT"
+      ></div>
+      <div
+        class="product-item"
+        data-id="4"
+        data-name="Nước Hoa Nữ Dior Miss Dior"
+        data-price="2650000"
+        data-category="Perfume"
+        data-image="../images/products/nuochoa2.jpg"
+        data-desc="Nước hoa nữ cao cấp, ngọt ngào và thanh lịch, phù hợp đi chơi và dự tiệc."
+        data-stock="6"
+        data-tag="NEW"
+      ></div>
+      <div
+        class="product-item"
+        data-id="5"
+        data-name="Sữa Rửa Mặt CeraVe Foaming Cleanser"
+        data-price="280000"
+        data-category="Cleanser"
+        data-image="../images/products/srm2.jpg"
+        data-desc="Sữa rửa mặt làm sạch sâu, không gây khô da, phù hợp da dầu."
+        data-stock="20"
+        data-tag="HOT"
+      ></div>
+      <div
+        class="product-item"
+        data-id="6"
+        data-name="Sữa Rửa Mặt Senka Perfect Whip"
+        data-price="150000"
+        data-category="Cleanser"
+        data-image="../images/products/srm1.jpg"
+        data-desc="Bọt mịn, làm sạch nhẹ nhàng, phù hợp da dầu và hỗn hợp."
+        data-stock="30"
+        data-tag="NEW"
+      ></div>
+      <div
+        class="product-item"
+        data-id="7"
+        data-name="Serum Glow Recipe Watermelon Pink Glow"
+        data-price="850000"
+        data-category="Serum"
+        data-image="../images/products/serum2.jpg"
+        data-desc="Serum màu hồng giúp cấp ẩm, làm sáng da và tạo hiệu ứng căng bóng tự nhiên."
+        data-stock="12"
+        data-tag="HOT"
+      ></div>
+      <div
+        class="product-item"
+        data-id="8"
+        data-name="Anua Peach 70 Niacin Serum"
+        data-price="920000"
+        data-category="Serum"
+        data-image="../images/products/serum1.jpg"
+        data-desc="Serum dưỡng sáng, giúp da đều màu và căng bóng, phù hợp da nhạy cảm."
+        data-stock="10"
+        data-tag="NEW"
+      ></div>
     </div>
 
     <div class="toast-box" id="toastBox"></div>
 
-    <footer class="footer py-5" style="background:#0f0f0f; color:white;">
-        <div class="container text-center">
-            <p class="mb-0">© 2026 Cosmetic Shop | Designed by Team</p>
-        </div>
+    <footer class="footer py-5" style="background: #0f0f0f; color: white">
+      <div class="container text-center">
+        <p class="mb-0">© 2026 Cosmetic Shop | Designed by Team</p>
+      </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+
     <script>
-        const CART_KEY = "cart";
-        let products = [];
-        let currentProduct = null;
+      const CART_KEY = "cart";
+      let products = [];
+      let currentProduct = null;
 
-        function formatVND(price) {
-            return price.toLocaleString("vi-VN") + " ₫";
-        }
+      function formatVND(price) {
+        return price.toLocaleString("vi-VN") + " ₫";
+      }
 
-        function showToast(message, type = "success") {
-            const toast = document.getElementById("toastBox");
-            toast.style.display = "block";
-            toast.style.opacity = "1";
-            toast.style.background = type === "success" ? "#111" : "#ff4d6d";
-            toast.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> ${message}`;
-            setTimeout(() => {
-                toast.style.opacity = "0";
-                setTimeout(() => { toast.style.display = "none"; }, 300);
-            }, 1500);
-        }
+      function showToast(message, type = "success") {
+        const toast = document.getElementById("toastBox");
+        toast.style.display = "block";
+        toast.style.opacity = "1";
+        toast.style.background = type === "success" ? "#111" : "#ff4d6d";
+        toast.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> ${message}`;
+        setTimeout(() => {
+          toast.style.opacity = "0";
+          setTimeout(() => {
+            toast.style.display = "none";
+          }, 300);
+        }, 1500);
+      }
 
-        function getProductsFromHTML() {
-            let items = document.querySelectorAll("#productsData .product-item");
-            let arr = [];
-            items.forEach(item => {
-                arr.push({
-                    id: parseInt(item.dataset.id),
-                    name: item.dataset.name,
-                    price: parseInt(item.dataset.price),
-                    category: item.dataset.category,
-                    image: item.dataset.image,
-                    description: item.dataset.desc,
-                    stock: parseInt(item.dataset.stock)
-                });
-            });
-            return arr;
-        }
-
-        function updateCartCount() {
-            let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
-            let totalQuantity = 0;
-            cart.forEach(item => totalQuantity += item.quantity);
-            document.getElementById("cartCount").innerText = totalQuantity;
-        }
-
-        function addToCart(productId, buyQuantity) {
-            let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
-            let product = products.find(p => p.id === productId);
-
-            if (!product) return false;
-            if (product.stock <= 0) {
-                showToast("Sản phẩm đã hết hàng!", "error");
-                return false;
-            }
-
-            let exist = cart.find(item => item.id === productId);
-            if (exist) {
-                // SỬA LỖI: Kiểm tra giới hạn kho khi mua số lượng lớn
-                if (exist.quantity + buyQuantity > product.stock) {
-                    showToast(`Không thể thêm! Tổng số lượng trong giỏ sẽ vượt giới hạn kho (${product.stock}).`, "error");
-                    return false;
-                }
-                exist.quantity += buyQuantity;
-            } else {
-                if (buyQuantity > product.stock) {
-                    showToast(`Số lượng chọn vượt quá tồn kho hiện tại (${product.stock})!`, "error");
-                    return false;
-                }
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    quantity: buyQuantity
-                });
-            }
-            localStorage.setItem(CART_KEY, JSON.stringify(cart));
-            updateCartCount();
-            return true;
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            products = getProductsFromHTML();
-            updateCartCount();
-
-            const urlParams = new URLSearchParams(window.location.search);
-            const productId = parseInt(urlParams.get("id"));
-            currentProduct = products.find(p => p.id === productId);
-
-            if (!currentProduct) {
-                alert("Sản phẩm không hợp lệ!");
-                window.location.href = "products.html";
-                return;
-            }
-
-            // Đổ dữ liệu lên màn hình
-            document.getElementById("breadcrumbName").innerText = currentProduct.name;
-            document.getElementById("detailName").innerText = currentProduct.name;
-            document.getElementById("detailCategory").innerText = currentProduct.category;
-            document.getElementById("detailPrice").innerText = formatVND(currentProduct.price);
-            document.getElementById("detailDesc").innerText = currentProduct.description;
-            document.getElementById("detailImage").src = currentProduct.image;
-
-            const stockEl = document.getElementById("detailStock");
-            const inputQty = document.getElementById("inputQty");
-            const btnBuyNowDetail = document.getElementById("btnBuyNowDetail");
-            const btnAddCartDetail = document.getElementById("btnAddCartDetail");
-
-            // SỬA LỖI: Khóa tương tác hoàn toàn nếu sản phẩm hết hàng ngay khi tải trang
-            if (currentProduct.stock <= 0) {
-                stockEl.innerText = "Hết hàng";
-                stockEl.className = "text-danger";
-                inputQty.value = 0;
-                
-                btnBuyNowDetail.disabled = true;
-                btnBuyNowDetail.innerText = "Hết hàng";
-                btnBuyNowDetail.className = "btn btn-secondary px-5 py-2";
-
-                btnAddCartDetail.disabled = true;
-                btnAddCartDetail.innerText = "Hết hàng";
-                btnAddCartDetail.className = "btn btn-secondary px-5 py-2 ml-2";
-            } else {
-                stockEl.innerText = `${currentProduct.stock} sản phẩm`;
-                stockEl.className = "text-success";
-
-                document.getElementById("btnMinus").addEventListener("click", function() {
-                    let val = parseInt(inputQty.value);
-                    if (val > 1) inputQty.value = val - 1;
-                });
-
-                document.getElementById("btnPlus").addEventListener("click", function() {
-                    let val = parseInt(inputQty.value);
-                    if (val < currentProduct.stock) {
-                        inputQty.value = val + 1;
-                    } else {
-                        showToast("Đã đạt giới hạn tồn kho!", "error");
-                    }
-                });
-
-                // Sự kiện Thêm vào giỏ
-                btnAddCartDetail.addEventListener("click", function() {
-                    let qty = parseInt(inputQty.value);
-                    if(addToCart(currentProduct.id, qty)) {
-                        showToast(`Đã thêm ${qty} sản phẩm vào giỏ hàng!`);
-                    }
-                });
-
-                // Sự kiện Mua ngay
-                btnBuyNowDetail.addEventListener("click", function() {
-                    let qty = parseInt(inputQty.value);
-                    if(addToCart(currentProduct.id, qty)) {
-                        window.location.href = "cart.html";
-                    }
-                });
-            }
+      function getProductsFromHTML() {
+        let items = document.querySelectorAll("#productsData .product-item");
+        let arr = [];
+        items.forEach((item) => {
+          arr.push({
+            id: parseInt(item.dataset.id),
+            name: item.dataset.name,
+            price: parseInt(item.dataset.price),
+            category: item.dataset.category,
+            image: item.dataset.image,
+            description: item.dataset.desc,
+            stock: parseInt(item.dataset.stock),
+          });
         });
+        return arr;
+      }
+
+      function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+        let totalQuantity = 0;
+        cart.forEach((item) => (totalQuantity += item.quantity));
+        document.getElementById("cartCount").innerText = totalQuantity;
+      }
+
+      function addToCart(productId, buyQuantity) {
+        let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+        let product = products.find((p) => p.id === productId);
+
+        if (!product) return false;
+        if (product.stock <= 0) {
+          showToast("Sản phẩm đã hết hàng!", "error");
+          return false;
+        }
+
+        let exist = cart.find((item) => item.id === productId);
+        if (exist) {
+          if (exist.quantity + buyQuantity > product.stock) {
+            showToast(
+              `Không thể thêm! Tổng số lượng trong giỏ sẽ vượt giới hạn kho (${product.stock}).`,
+              "error",
+            );
+            return false;
+          }
+          exist.quantity += buyQuantity;
+        } else {
+          if (buyQuantity > product.stock) {
+            showToast(
+              `Số lượng chọn vượt quá tồn kho hiện tại (${product.stock})!`,
+              "error",
+            );
+            return false;
+          }
+          cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: buyQuantity,
+          });
+        }
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        updateCartCount();
+        return true;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        products = getProductsFromHTML();
+        updateCartCount();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get("id"));
+        currentProduct = products.find((p) => p.id === productId);
+
+        if (!currentProduct) {
+          alert("Sản phẩm không hợp lệ!");
+          window.location.href = "products.html";
+          return;
+        }
+
+        document.getElementById("breadcrumbName").innerText =
+          currentProduct.name;
+        document.getElementById("detailName").innerText = currentProduct.name;
+        document.getElementById("detailCategory").innerText =
+          currentProduct.category;
+        document.getElementById("detailPrice").innerText = formatVND(
+          currentProduct.price,
+        );
+        document.getElementById("detailDesc").innerText =
+          currentProduct.description;
+        document.getElementById("detailImage").src = currentProduct.image;
+
+        const stockEl = document.getElementById("detailStock");
+        const inputQty = document.getElementById("inputQty");
+        const btnBuyNowDetail = document.getElementById("btnBuyNowDetail");
+        const btnAddCartDetail = document.getElementById("btnAddCartDetail");
+
+        if (currentProduct.stock <= 0) {
+          stockEl.innerText = "Hết hàng";
+          stockEl.className = "text-danger";
+          inputQty.value = 0;
+
+          btnBuyNowDetail.disabled = true;
+          btnBuyNowDetail.innerText = "Hết hàng";
+          btnBuyNowDetail.className = "btn btn-secondary px-5 py-2";
+
+          btnAddCartDetail.disabled = true;
+          btnAddCartDetail.innerText = "Hết hàng";
+          btnAddCartDetail.className = "btn btn-secondary px-5 py-2 ml-2";
+        } else {
+          stockEl.innerText = `${currentProduct.stock} sản phẩm`;
+          stockEl.className = "text-success";
+
+          document
+            .getElementById("btnMinus")
+            .addEventListener("click", function () {
+              let val = parseInt(inputQty.value);
+              if (val > 1) inputQty.value = val - 1;
+            });
+
+          document
+            .getElementById("btnPlus")
+            .addEventListener("click", function () {
+              let val = parseInt(inputQty.value);
+              if (val < currentProduct.stock) {
+                inputQty.value = val + 1;
+              } else {
+                showToast("Đã đạt giới hạn tồn kho!", "error");
+              }
+            });
+
+          btnAddCartDetail.addEventListener("click", function () {
+            let qty = parseInt(inputQty.value);
+            if (addToCart(currentProduct.id, qty)) {
+              showToast(`Đã thêm ${qty} sản phẩm vào giỏ hàng!`);
+            }
+          });
+
+          btnBuyNowDetail.addEventListener("click", function () {
+            let qty = parseInt(inputQty.value);
+            if (addToCart(currentProduct.id, qty)) {
+              window.location.href = "cart.html";
+            }
+          });
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

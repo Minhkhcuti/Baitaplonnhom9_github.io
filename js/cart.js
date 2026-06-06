@@ -1,4 +1,3 @@
-
 const CART_KEY = "cart";
 
 let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
